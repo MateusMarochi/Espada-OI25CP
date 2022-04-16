@@ -19,10 +19,11 @@ void setup() {
  
     display.init();
     display.clear();
-    display.flipScreenVertically();
+    //display.flipScreenVertically();
     display.setFont(ArialMT_Plain_24);
-    //display.setTextAlignment(TEXT_ALIGN_CENTER);
-    display.drawString(63, 12, "CONECTANDO ...");
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.drawString(63, 12, "...");
+    display.display();
     connectWiFi();
     display.drawString(63, 12, "BORA");
     display.display();
@@ -34,7 +35,7 @@ void loop() {
     if (WiFi.status() != WL_CONNECTED) { 
         connectWiFi();
         display.clear();
-        display.drawString(63, 12, "Vish");
+        display.drawString(63, 12, "VISH");
         display.display();
     }
  
@@ -50,13 +51,13 @@ void loop() {
     
     if(wifiStrength >= - 70 && wifiStrength < - 63){
       display.clear();
-      display.drawString(63, 12, "morno");
+      display.drawString(63, 12, "MORNO");
       display.display();
     }
  
     if(wifiStrength >= - 63 && wifiStrength < - 43){
       display.clear();
-      display.drawString(63, 12, "quente");
+      display.drawString(63, 12, "QUENTE");
       display.display();
     }
  
@@ -71,7 +72,7 @@ void connectWiFi(){
  
     while (WiFi.status() != WL_CONNECTED){
         WiFi.begin(ssid, senha);
-        delay(3000);
+        delay(1000);
     }
  
     // Apresenta na serial que foi possivel se conectar
